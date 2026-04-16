@@ -94,7 +94,7 @@ python main.py
 ---
 
 ## 📸 Gameplay
-![Gameplay Screenshot](assets/screenshots/gui.png)
+![Gameplay Screenshot](assets/screenshots/gameplay.png)
 
 ---
 
