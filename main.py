@@ -55,7 +55,7 @@ class Entity:
             self.die()
 
     def die(self):
-        print(f"{colorize(colorize(self.name, 'crossed'), 'bold')} has {colorize("died", "red")}!")
+        print(f"{colorize(colorize(self.name, 'crossed'), 'bold')} has {colorize('died', 'red')}!")
         self.is_alive = False
         if isinstance(self, Hero):
             game_over()
@@ -83,7 +83,7 @@ class Hero(Entity):
             power += 2
             self.mana -= 20
         damage = random.randint(power, power*5)
-        print(f"{colorize(self.name, "green")} {colorize("ATTACKS", "bold")} {colorize(e.name, "red")} for {colorize(str(damage), "light_red")} {colorize("HP", "light_red")} damage!")
+        print(f"{colorize(self.name, 'green')} {colorize('ATTACKS', 'bold')} {colorize(e.name, 'red')} for {colorize(str(damage), 'light_red')} {colorize('HP', 'light_red')} damage!")
         if self.mana + 10 >  self.max_mana:
             self.mana = self.max_mana
         else:
@@ -99,16 +99,16 @@ class Hero(Entity):
         heal_amount = random.randint(heal_power, heal_power*3)
         if self.hp + heal_amount > self.max_hp:
             heal_amount = self.max_hp - self.hp
-        print(f"{colorize(self.name, "green")} {colorize("HEALS", "bold")} for {colorize(str(heal_amount) + " HP!", "light_green")}")
+        print(f"{colorize(self.name, 'green')} {colorize('HEALS', 'bold')} for {colorize(str(heal_amount) + ' HP!', 'light_green')}")
         self.hp += heal_amount
 
     def level_up(self):
         self.level += 1
-        print(f"You have {colorize("LEVELED UP", "bold")} to Lv. {colorize(str(self.level), "blue")}!")
+        print(f"You have {colorize('LEVELED UP', 'bold')} to Lv. {colorize(str(self.level), 'blue')}!")
         for stat in self.rpg_stats:
             self.rpg_stats[stat] += 5
         self.hp = self.max_hp
-        print(f"{colorize(self.name, "green")} is now at {colorize(f"{self.max_hp} HP", "light_green")}!")
+        print(f"{colorize(self.name, 'green')} is now at {colorize(f'{self.max_hp} HP', 'light_green')}!")
 
     def gain_exp(self, exp: int):
         if "Scroll" in self.loot:
@@ -120,14 +120,14 @@ class Hero(Entity):
 
     def show_stats(self):
         print("================================")
-        print(f"{colorize(self.name, "green")} has {colorize(str(self.hp) + f"/{self.max_hp} HP", "light_green")} has {colorize(str(self.mana) + f"/{self.max_mana} Mana", "light_blue")} and is level {colorize(str(self.level), "blue")}")
-        print(f"They have {colorize(str(self.experience), "blue")}/{colorize(str(2**(self.level+2)), "blue")} exp.")
-        print(f"They have the following {colorize("loot", "yellow")}:")
+        print(f"{colorize(self.name, 'green')} has {colorize(str(self.hp) + f'/{self.max_hp} HP', 'light_green')} has {colorize(str(self.mana) + f'/{self.max_mana} Mana', 'light_blue')} and is level {colorize(str(self.level), 'blue')}")
+        print(f"They have {colorize(str(self.experience), 'blue')}/{colorize(str(2**(self.level+2)), 'blue')} exp.")
+        print(f"They have the following {colorize('loot', 'yellow')}:")
         if not self.loot:
             print("Nothing Yet!")
         else:
             for item, power in self.loot.items():
-                print(f"{colorize(item, "yellow")} with {colorize(str(power), "bold")} power!")
+                print(f"{colorize(item, 'yellow')} with {colorize(str(power), 'bold')} power!")
             if len(self.loot) > 1:
                 total_power = reduce(lambda x, y: x + y, self.loot.values())
                 print(f"Total gear power: {colorize(str(total_power), 'bold')}")
@@ -150,10 +150,10 @@ class Hero(Entity):
         if not self.loot:
             print("He sees that you don't have any gear and says:")
             time.sleep(2)
-            print(f"'Here, take this {colorize("Sword", "yellow")}. You'll need it.'")
+            print(f"'Here, take this {colorize('Sword', 'yellow')}. You'll need it.'")
             time.sleep(2)
             self.loot["Sword"] = 1
-            print(f"He gives you a {colorize("Sword", "yellow")} with {colorize("1", "bold")} power.")
+            print(f"He gives you a {colorize('Sword', 'yellow')} with {colorize('1', 'bold')} power.")
             time.sleep(2)
             print("You leave the blacksmith.")
             time.sleep(2)
@@ -171,11 +171,11 @@ class Hero(Entity):
                 print(colorize("Invalid input. Please enter a number.", "red"))
                 continue
         if ans == num1 * num2:
-            print(f"{colorize("Correct!", "green")} Blacksmith sharpens your gear for {colorize("free", "light_green")}!")
+            print(f"{colorize('Correct!', 'green')} Blacksmith sharpens your gear for {colorize('free', 'light_green')}!")
             self.loot = dict(map(lambda item: (item[0], item[1] + 1), self.loot.items()))
             time.sleep(2)
         else:
-            print(f"You have {colorize("lost", "red")} the {colorize("prize", "yellow")}!")
+            print(f"You have {colorize('lost', 'red')} the {colorize('prize', 'yellow')}!")
             time.sleep(2)
         print("You leave the blacksmith.")
         time.sleep(2)
@@ -248,7 +248,7 @@ class Enemy(Entity):
         if power < 1:
             power = 1
         damage = random.randint(power, power * 5)
-        print(f"{colorize(self.name, 'red')} {colorize("ATTACKS", "bold")} {colorize(h.name, "green")} for {colorize(f"{damage} HP", "light_red")} damage!")
+        print(f"{colorize(self.name, 'red')} {colorize('ATTACKS', 'bold')} {colorize(h.name, 'green')} for {colorize(f'{damage} HP', 'light_red')} damage!")
         h.take_damage(damage)
 
     @combat
@@ -256,7 +256,7 @@ class Enemy(Entity):
         heal_amount = random.randint(1, self.difficulty * 3)
         if self.hp + heal_amount > self.max_hp:
             heal_amount = self.max_hp - self.hp
-        print(f"{colorize(self.name, 'red')} {colorize("HEALS", "bold")} for {colorize(f"{heal_amount} HP", 'light_green')}!")
+        print(f"{colorize(self.name, 'red')} {colorize('HEALS', 'bold')} for {colorize(f'{heal_amount} HP', 'light_green')}!")
         self.hp += heal_amount
 
     def take_action(self):
@@ -355,17 +355,17 @@ def main(top_scores: int = 0, countdown: int = 3):
                 else:
                     enemy.attack(hero)
             if random.randint(1, 5) == 1:
-                print(f"\n\n\nYou have found something {colorize("useful", "blue")}!")
+                print(f"\n\n\nYou have found something {colorize('useful', 'blue')}!")
                 time.sleep(2)
                 new_loot = random.choice(LOOTABLES)
                 loot_power = random.randint(1, 5)
 
                 if new_loot in hero.loot:
                     hero.loot[new_loot] += loot_power
-                    print(f"You found another {colorize(new_loot, "yellow")} with {colorize(str(loot_power), "bold")} power!")
+                    print(f"You found another {colorize(new_loot, 'yellow')} with {colorize(str(loot_power), 'bold')} power!")
                 else:
                     hero.loot[new_loot] = loot_power
-                    print(f"You found a {colorize(new_loot, "yellow")} with {colorize(str(loot_power), "bold")} power!")
+                    print(f"You found a {colorize(new_loot, 'yellow')} with {colorize(str(loot_power), 'bold')} power!")
                 time.sleep(2)
             if random.randint(1, 5) == 5 or enemy.difficulty == 1:
                 hero.blacksmith_event()
@@ -377,7 +377,7 @@ def main(top_scores: int = 0, countdown: int = 3):
         print(f"You have {colorize(colorize(str(countdown), 'bold'), 'light_red')} chances left.")
         print("Better luck next time!")
         if countdown > 0:
-            print(f"Would you like to play again? ({colorize(colorize("y", "bold"), "green")}/{colorize(colorize("n", "bold"), "red")})")
+            print(f"Would you like to play again? ({colorize(colorize('y', 'bold'), 'green')}/{colorize(colorize('n', 'bold'), 'red')})")
             inp = input()
             if inp.lower() == "y":
                 del hero, spawner, enemy
