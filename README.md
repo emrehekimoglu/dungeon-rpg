@@ -89,3 +89,38 @@ Bu yapı, özellikle oyun backend sistemleri ve gameplay logic açısından teme
 git clone https://github.com/emrehekimoglu/dungeon-rpg
 cd dungeon-rpg
 python main.py
+```
+
+---
+
+## 📸 Gameplay
+![Gameplay Screenshot](assets/screenshots/gui.png)
+
+---
+
+## 🎯 Amaç
+
+Bu proje, aşağıdaki alanlarda pratik yapmak amacıyla geliştirilmiştir:
+
+- Oyun sistem tasarımı
+- Backend logic geliştirme
+- State ve event yönetimi
+- Nesne yönelimli programlama
+
+---
+
+## 👥 Contributors
+- Emre Hekimoğlu
+
+---
+
+## 🚀 Gelecek Geliştirmeler
+- Special skill sistemi
+- Daha fazla enemy türü
+- Inventory geliştirme
+- Save/Load sistemi
+- GUI versiyon
+
+---
+
+<p align="center"> ⚡ Built with passion for game development ⚡ </p>
